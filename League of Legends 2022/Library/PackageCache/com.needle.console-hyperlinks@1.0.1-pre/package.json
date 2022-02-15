@@ -1,0 +1,16 @@
+{
+  "displayName": "Console Hyperlinks",
+  "name": "com.needle.console-hyperlinks",
+  "version": "1.0.1-pre",
+  "unity": "2019.4",
+  "description": "Add support for custom console hyperlinks",
+  "author": {
+    "name": "Needle",
+    "email": "contact@needle.tools",
+    "url": "https://needle.tools"
+  },
+  "category": "Libraries",
+  "publishConfig": {
+    "registry": "https://package.openupm.com"
+  }
+}
