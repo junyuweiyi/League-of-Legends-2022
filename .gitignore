@@ -1,14 +1,14 @@
 
 # IDE Generated
-League of Legends 2022/.vs
-League of Legends 2022/.idea
+League of Legends 2022/Puzzle Bobble/.vs
+League of Legends 2022/Puzzle Bobble/.idea
 League of Legends 2022/League of Legends 2022.sln.DotSettings.user
 
 # Unity Generated
-League of Legends 2022/Library
-League of Legends 2022/Logs
-League of Legends 2022/obj
-League of Legends 2022/Temp
+League of Legends 2022/Puzzle Bobble/Library
+League of Legends 2022/Puzzle Bobble/Logs
+League of Legends 2022/Puzzle Bobble/obj
+League of Legends 2022/Puzzle Bobble/Temp
 
 Thumbs.db
 Thumbs.db.meta
@@ -17,8 +17,6 @@ Thumbs.db.meta
 .history
 League of Legends 2022/***.csproj
 League of Legends 2022/**/*.sln
-
-XLua/build/**/build*/
 
 /Build/
 League of Legends 2022/Build/
