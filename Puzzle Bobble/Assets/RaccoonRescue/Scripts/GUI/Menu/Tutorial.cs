@@ -10,6 +10,8 @@ public class Tutorial : MonoBehaviour {
     public string[] labels;
 
 	// Use this for initialization
+
+    //本地化待处理，没有看到调用的地方
 	void Start () {
         int level = mainscript.Instance.currentLevel;
         if( level <= 8 )

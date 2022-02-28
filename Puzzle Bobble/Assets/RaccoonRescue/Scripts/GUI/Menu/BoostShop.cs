@@ -43,7 +43,7 @@ public class BoostShop : MonoBehaviour
 		icon.sprite = icons[(int)_boostType];
 		icon.SetNativeSize();
 		title.text = titles[(int)_boostType];
-		description.text = descriptions[(int)_boostType];
+		description.text = FW.Localization.Get(descriptions[(int)_boostType]);
 		int pr = prices[(int)_boostType];
 		price.text = "" + pr;
 		buySuccess = buyCallback;

@@ -91,7 +91,7 @@ public class LIFESAddCounter : MonoBehaviour
 				InitScript.timeForReps = text.text;
 				//				//	text.text = "+1 in \n " + Mathf.FloorToInt( MainMenu.RestLifeTimer/60f) + ":" + Mathf.RoundToInt( (MainMenu.RestLifeTimer/60f - Mathf.FloorToInt( MainMenu.RestLifeTimer/60f))*60f);
 			} else {
-				text.text = "   Full";
+				text.text = "   " + FW.Localization.Get("Currency_Full");
 			}
 		}
 	}

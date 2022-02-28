@@ -14,6 +14,6 @@ public class RewardIcon : MonoBehaviour {
 
 	public void SetIconSprite (int i) {
 		icon.sprite = sprites [i];
-		text.text = strings [i];
+		text.text = FW.Localization.Get(strings[i]);
 	}
 }

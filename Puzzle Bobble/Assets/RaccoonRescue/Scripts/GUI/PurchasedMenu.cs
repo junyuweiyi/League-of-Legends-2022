@@ -23,6 +23,6 @@ public class PurchasedMenu : MonoBehaviour {
 		icon.sprite = sprites [i];
 		icon.SetNativeSize ();
 		icon.transform.localScale = Vector3.one * 2f;
-		text.text = strings [i];
+		text.text = FW.Localization.Get(strings[i]);
 	}
 }
