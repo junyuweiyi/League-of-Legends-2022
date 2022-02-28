@@ -57,6 +57,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Base\FW.cs" />
+    <Compile Include="Assets\Scripts\Logic\BaseRoom.cs" />
+    <Compile Include="Assets\Scripts\Logic\Matching\MatchingController.cs" />
+    <Compile Include="Assets\Scripts\Logic\MatchingMgr.cs" />
+    <Compile Include="Assets\Scripts\Logic\MatchingRoom.cs" />
+    <Compile Include="Assets\Scripts\Logic\RaceRoom.cs" />
+    <Compile Include="Assets\Scripts\Logic\RoomPlayerContainer.cs" />
+    <Compile Include="Assets\Scripts\Logic\SelectHeroMgr.cs" />
+    <Compile Include="Assets\Scripts\Logic\SelectHeroRoom.cs" />
+    <Compile Include="Assets\Scripts\Logic\ServerNetMgr.cs" />
+    <Compile Include="Assets\Scripts\Logic\SimpleMatchingRule.cs" />
+    <Compile Include="Assets\Scripts\Logic\User.cs" />
+    <Compile Include="Assets\Scripts\Protos\api.cs" />
+    <Compile Include="Assets\Scripts\Protos\err_code.cs" />
+    <Compile Include="Assets\Scripts\Protos\struct.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -605,49 +619,17 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{87158F5E-4027-12DC-4672-E6A41AE07B81}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{1F58A0A7-6FF7-0A4C-021F-1C40C6F8957A}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{9EA0ED0A-3D5E-A053-E337-8255054DBEAB}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{D64D79BA-634D-8512-FD17-A7647A032A5F}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
-      <Project>{C88E9DB7-1614-3290-11EA-16E67089158B}</Project>
-      <Name>Unity.CollabProxy.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{FA873FE9-C1E5-260C-1ACF-26F26D49D9A7}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{2B97DFC3-F5EA-11E6-0A85-41E83CB307CA}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{13302FB5-1EC5-2D0B-F44A-65B2C10DFA1A}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Framework.csproj">
-      <Project>{E9F60784-65A6-9B26-5EB7-50B7620A7C07}</Project>
-      <Name>Framework</Name>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{D30B04C8-D80D-A29E-8299-D351533E9DA7}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="UIEffect.csproj">
       <Project>{90D68E53-469B-8F80-B6E8-BAF5EFA78682}</Project>
@@ -656,6 +638,10 @@
     <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
       <Project>{17B171B9-125C-CE4A-5BCF-E1A0D50E2093}</Project>
       <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{87158F5E-4027-12DC-4672-E6A41AE07B81}</Project>
+      <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.CacheServer.csproj">
       <Project>{65CB7490-F110-0604-9FE4-A618074473A1}</Project>
@@ -680,6 +666,10 @@
     <ProjectReference Include="Unity.Burst.csproj">
       <Project>{DFEC31C3-0915-894E-140D-1801A4D980EE}</Project>
       <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{1F58A0A7-6FF7-0A4C-021F-1C40C6F8957A}</Project>
+      <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="AssetUsageDetector.Editor.csproj">
       <Project>{C97FD2E0-08EF-C537-1FAF-2BD69B99E80E}</Project>
@@ -721,6 +711,10 @@
       <Project>{A6E38134-7469-F87A-6D67-73C8B273F009}</Project>
       <Name>Unity.Burst.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Framework.csproj">
+      <Project>{E9F60784-65A6-9B26-5EB7-50B7620A7C07}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="Google.Play.Core.csproj">
       <Project>{2214332F-F3BC-D02D-1FE5-CD1A70952C56}</Project>
       <Name>Google.Play.Core</Name>
@@ -736,6 +730,10 @@
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
       <Project>{C69E6ADF-8FEF-15D4-E804-8EF19DB4E141}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
+      <Project>{9EA0ED0A-3D5E-A053-E337-8255054DBEAB}</Project>
+      <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="spine-timeline-editor.csproj">
       <Project>{ECEB3C7D-05E2-7B70-0581-C99ADC193303}</Project>
@@ -765,6 +763,10 @@
       <Project>{87AAD954-CC33-E5B2-1BA5-B0779F89A0F7}</Project>
       <Name>Unity.MemoryProfiler</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{D64D79BA-634D-8512-FD17-A7647A032A5F}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Addressables.Editor.csproj">
       <Project>{F1168D92-6265-C2EA-F4AE-4B5BD50F2883}</Project>
       <Name>Unity.Addressables.Editor</Name>
@@ -777,9 +779,17 @@
       <Project>{95C4A433-384C-B04E-EFFE-0E413399E164}</Project>
       <Name>needle.ConsoleHyperlinks.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
+      <Project>{C88E9DB7-1614-3290-11EA-16E67089158B}</Project>
+      <Name>Unity.CollabProxy.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Notifications.iOS.csproj">
       <Project>{CC74C7EA-D2F9-7BD2-518C-347A17741806}</Project>
       <Name>Unity.Notifications.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{FA873FE9-C1E5-260C-1ACF-26F26D49D9A7}</Project>
+      <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
       <Project>{8983096F-1D37-D0C0-D991-F8FC8A5C514D}</Project>
@@ -813,6 +823,10 @@
       <Project>{EF0AA0DB-EFB5-7CF1-2B70-2F512B3229B3}</Project>
       <Name>Google.Play.AppUpdate</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
+      <Project>{2B97DFC3-F5EA-11E6-0A85-41E83CB307CA}</Project>
+      <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Addressables.csproj">
       <Project>{73C28F1A-8BEE-918F-41B0-4C7A39DB812C}</Project>
       <Name>Unity.Addressables</Name>
@@ -845,6 +859,10 @@
       <Project>{1C4F71C8-66DC-CB3A-38A1-74569CBCDADF}</Project>
       <Name>nSelection</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{13302FB5-1EC5-2D0B-F44A-65B2C10DFA1A}</Project>
+      <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Formats.Fbx.Runtime.csproj">
       <Project>{76FD5730-3C62-9DC2-77BC-234489C1278A}</Project>
       <Name>Unity.Formats.Fbx.Runtime</Name>
@@ -860,6 +878,10 @@
     <ProjectReference Include="Unity.MemoryProfiler.Editor.csproj">
       <Project>{BAC4AADF-2E87-A13E-4381-DBAE7A86C762}</Project>
       <Name>Unity.MemoryProfiler.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="BasicUtils.csproj">
+      <Project>{1BF288A4-2BF9-AD90-C164-A73FBB3AE720}</Project>
+      <Name>BasicUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

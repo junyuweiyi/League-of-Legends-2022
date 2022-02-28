@@ -1,0 +1,12 @@
+syntax = "proto3";
+package protocol;
+
+import "gogoproto/gogo.proto";
+option (gogoproto.goproto_enum_prefix_all) = false;
+
+// 通用消息错误码
+enum ErrCode {
+  OK = 0; // 成功
+
+  SystemErr                    = 1;  // 未知系统错误
+}

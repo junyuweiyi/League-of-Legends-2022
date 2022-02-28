@@ -1,0 +1,12 @@
+syntax = "proto3";
+package protocol;
+
+import "gogoproto/gogo.proto";
+option (gogoproto.goproto_enum_prefix_all) = false;
+
+enum ServerStatus {
+  ServerStatusRunning = 0; //正常
+  ServerStatusPending = 1; //备服
+  ServerStatusCrowd   = 2; //拥挤
+  ServerStatusFull    = 3; //爆满
+}
