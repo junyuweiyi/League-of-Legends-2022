@@ -1,0 +1,34 @@
+
+# IDE Generated
+League of Legends 2022/.vs
+League of Legends 2022/.idea
+League of Legends 2022/League of Legends 2022.sln.DotSettings.user
+
+# Unity Generated
+League of Legends 2022/Library
+League of Legends 2022/Logs
+League of Legends 2022/obj
+League of Legends 2022/Temp
+
+Thumbs.db
+Thumbs.db.meta
+.DS_Store
+.vscode
+.history
+League of Legends 2022/***.csproj
+League of Legends 2022/**/*.sln
+
+XLua/build/**/build*/
+
+/Build/
+League of Legends 2022/Build/
+BuildLogs/
+BuildOutputs/
+QQC
+/League of Legends 2022/Assets/QQC.meta
+*.vsconfig
+bin/apk/l3.apk
+
+ProjectCuratorSettings.json
+BuildReportToolOptions.xml
+bin/apk/
