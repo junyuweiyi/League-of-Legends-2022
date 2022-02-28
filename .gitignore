@@ -1,29 +1,23 @@
 
 # IDE Generated
-League of Legends 2022/Puzzle Bobble/.vs
-League of Legends 2022/Puzzle Bobble/.idea
-League of Legends 2022/League of Legends 2022.sln.DotSettings.user
+Puzzle Bobble/.vs
+Puzzle Bobble/.idea
+League of Legends 2022.sln.DotSettings.user
 
 # Unity Generated
-League of Legends 2022/Puzzle Bobble/Library
-League of Legends 2022/Puzzle Bobble/Logs
-League of Legends 2022/Puzzle Bobble/obj
-League of Legends 2022/Puzzle Bobble/Temp
+Puzzle Bobble/Library
+Puzzle Bobble/Logs
+Puzzle Bobble/obj
+Puzzle Bobble/Temp
 
 Thumbs.db
 Thumbs.db.meta
 .DS_Store
 .vscode
 .history
-League of Legends 2022/***.csproj
-League of Legends 2022/**/*.sln
+***.csproj
+**/*.sln
 
-/Build/
-League of Legends 2022/Build/
-BuildLogs/
-BuildOutputs/
-QQC
-/League of Legends 2022/Assets/QQC.meta
 *.vsconfig
 bin/apk/l3.apk
 
