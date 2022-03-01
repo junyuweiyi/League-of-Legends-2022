@@ -1,19 +1,14 @@
-﻿/********************************************************************
-	created:	2020/09/23
-	author:		maoqy
-	
-	purpose:	本地化管理器，根据当前设置的语言提供对应语言的文本
-*********************************************************************/
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System;
+using System.IO;
+
 
 namespace iFramework
 {
     internal class LocalizationMgr : ILocalizationMgr
     {
-        private IDataMgr _dataMgr;
+        public System.Action OnLocalizationLoad { get; set; }
+
         private Dictionary<string, string> _keyValues = new Dictionary<string, string>();
 
         private HashSet<ILocalizationLoadListener> _localizationLoadListeners = new HashSet<ILocalizationLoadListener>();
@@ -29,23 +24,73 @@ namespace iFramework
             _localizationLoadListeners.Remove(listener);
         }
 
-        public void Initialize(IDataMgr dataMgr)
+        public void Initialize()
         {
-            _dataMgr = dataMgr;
         }
+
+        struct ParserData
+        {
+            public string key;
+            public string value;
+            public string languageName;
+
+            public void Apply(Dictionary<string, Dictionary<string, string>> dict)
+            {
+                dict[languageName][key] = value;
+            }
+        }
+
+
+        Dictionary<string, Dictionary<string, string>> _i18ns = new Dictionary<string, Dictionary<string, string>>();
         public void Load(string locale)
         {
             Unload();
-
-            var dataTable = _dataMgr.GetDataTable<I18NText>("I18NText_" + locale);
-            foreach (var data in dataTable.Data.Values)
+            if (_i18ns.Count == 0)
             {
-                if (!_keyValues.ContainsKey(data.key))
-                    _keyValues.Add(data.key, data.value);
-                else
-                    Debug.LogError("本地化表有重复 " + data.key + " " + data.value);
+                var i18nText = Resources.Load<TextAsset>("i18n_texts");
+
+                List<string> languageNames = new List<string>();
+                StringReader stringReader = new StringReader(i18nText.text);
+                string aLine = null;
+                while (true)
+                {
+                    aLine = stringReader.ReadLine();
+                    if (aLine != null)
+                    {
+                        var lineUnits = aLine.Split(',');
+
+                        if (aLine.StartsWith("Key"))
+                        {
+                            for (int i = 1; i < lineUnits.Length; i++)
+                            {
+                                languageNames.Add(lineUnits[i]);
+                            }
+                            foreach (var languageName in languageNames)
+                            {
+                                _i18ns[languageName] = new Dictionary<string, string>();
+                            }
+                            continue;
+                        }
+
+                        string key = lineUnits[0];
+                        for (int i = 1; i < lineUnits.Length; i++)
+                        {
+                            ParserData parserData = new ParserData();
+                            parserData.key = "LC_" + key;
+                            parserData.value = lineUnits[i];
+                            parserData.languageName = languageNames[i - 1];
+                            parserData.Apply(_i18ns);
+                        }
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
             }
 
+            _keyValues = new Dictionary<string, string>(_i18ns[locale]);
             foreach (var listener in _localizationLoadListeners)
             {
                 try
@@ -57,6 +102,7 @@ namespace iFramework
                     Debug.LogException(e);
                 }
             }
+            OnLocalizationLoad?.Invoke();
         }
 
         public string Get(string key, bool returnKeyIfNotFound = true, string defaultValue = "")

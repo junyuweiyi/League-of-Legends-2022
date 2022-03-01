@@ -14,6 +14,7 @@ namespace iFramework
     /// </summary>
     public interface ILocalizationMgr
     {
+        Action OnLocalizationLoad { get; set; }
         /// <summary>
         /// 注册本地化文件加载或切换的事件<br/>
         /// 增加这个接口是因为使用delegate方式监听事件时，将函数转换为delegate会生成新对象<br/>
@@ -31,7 +32,7 @@ namespace iFramework
         /// 初始化，设置数据表管理器
         /// </summary>
         /// <param name="dataMgr"></param>
-        void Initialize(IDataMgr dataMgr);
+        void Initialize();
         /// <summary>
         /// 加载相应语言的文本文件
         /// </summary>

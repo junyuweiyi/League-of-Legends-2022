@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using iFramework;
 
-public class FW : MonoBehaviour
+public class FW
 {
     #region Framework Managers
     public static IDataMgr DataMgr { get; private set; }
@@ -9,19 +9,13 @@ public class FW : MonoBehaviour
     public static ILocalizationMgr Localization { get; private set; }
     #endregion
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-        InitFramework();
-    }
-
-    private void InitFramework()
+    public static void InitFramework()
     {
         DataMgr = new DataMgr();
         ResourceMgr = new ResourceMgr();
         Localization = new LocalizationMgr();
 
         DataMgr.Initialize(ResourceMgr, "");
-        Localization.Initialize(DataMgr);
+        Localization.Initialize();
     }   
 }

@@ -425,6 +425,17 @@ public class AnimationManager : MonoBehaviour
 
     }
 
+    public void ShowLanguage(GameObject languageUI)
+    {
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
+        if (!languageUI.activeSelf)
+        {
+            languageUI.SetActive(true);
+        }
+        else
+            languageUI.SetActive(false);
+    }
+
     public void Info()
     {
         //		if (SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("map") || SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("menu"))

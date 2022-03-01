@@ -4106,7 +4106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.75, y: 98.650024}
+  m_AnchoredPosition: {x: -14.75, y: 98.6499}
   m_SizeDelta: {x: 29.5, y: 197.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &292401254
@@ -5125,8 +5125,8 @@ GameObject:
   - component: {fileID: 382868942}
   - component: {fileID: 382868947}
   - component: {fileID: 382868948}
-  - component: {fileID: 382868949}
   - component: {fileID: 382868950}
+  - component: {fileID: 382868944}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5150,6 +5150,19 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382868941}
   m_Enabled: 1
+--- !u!114 &382868944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382868941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ab0e869f584fa4091dad28f1b06d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kGameBackgroundWidth: 1536
 --- !u!20 &382868945
 Camera:
   m_ObjectHideFlags: 0
@@ -5177,7 +5190,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.6
+  orthographic size: 17
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5243,18 +5256,6 @@ MonoBehaviour:
   Bounds:
     m_Center: {x: 0, y: 49, z: 0}
     m_Extent: {x: 7.6, y: 60.9, z: 0}
---- !u!114 &382868949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382868941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ab0e869f584fa4091dad28f1b06d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &382868950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11836,7 +11837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.749634, y: 98.65222}
+  m_AnchoredPosition: {x: -14.749512, y: 98.65234}
   m_SizeDelta: {x: 29.5, y: 197.30005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &888765699
@@ -14186,7 +14187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.75, y: 98.650024}
+  m_AnchoredPosition: {x: -14.75, y: 98.6499}
   m_SizeDelta: {x: 29.5, y: 197.30005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1062528335
@@ -20669,7 +20670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400002, guid: 333dccc73ac3b514b8803892297987ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 98.650024
+      value: 98.6499
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 333dccc73ac3b514b8803892297987ba, type: 3}
@@ -23707,7 +23708,7 @@ PrefabInstance:
     - target: {fileID: 224481701175091392, guid: 442e09d896a4a4642a32a252b5f3af10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14.749756
+      value: -14.749512
       objectReference: {fileID: 0}
     - target: {fileID: 224481701175091392, guid: 442e09d896a4a4642a32a252b5f3af10,
         type: 3}
@@ -27834,7 +27835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1390bc64bbdfc4a954c3dfa8d20406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 9e3d1111e9b374e6c9fe817e247fbb88, type: 2}
 --- !u!1001 &2108272691
 PrefabInstance:
   m_ObjectHideFlags: 0
