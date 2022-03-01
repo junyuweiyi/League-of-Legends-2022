@@ -1,11 +1,9 @@
-﻿using iFramework;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static UILanguageSwitch;
-using static UnityEditor.PlayerSettings.Switch;
+
 
 public class UILanguageSwitch : MonoBehaviour, ILanguageSelect
 {

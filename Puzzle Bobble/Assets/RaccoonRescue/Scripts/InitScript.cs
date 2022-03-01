@@ -86,7 +86,6 @@ namespace InitScriptName
         public void Awake()
         {
             Instance = this;
-            FW.InitFramework();
             if (LevelEditorBase.THIS == null)
             {
                 GameObject gm = Resources.Load("LevelEditorBase") as GameObject;
@@ -131,40 +130,11 @@ namespace InitScriptName
             }
 
             GameObject.Find("Music").GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Music");
-            SoundBase.Instance.GetComponent<AudioSource>().volume = PlayerPrefs.GetInt("Sound");
-
-            SystemLanguage language = SystemLanguage.Unknown;
-            if (PlayerPrefs.HasKey("Language"))
-            {
-                language = (SystemLanguage)PlayerPrefs.GetInt("Language");
-            }
-            else
-            {
-                language = Application.systemLanguage;
-                PlayerPrefs.SetInt("Language", (int)language);
-            }
-            var temp = language;
-            language = GetValidLanguage(language);
-            if (language != temp)
-            {
-                PlayerPrefs.SetInt("Language", (int)language);
-            }
-            FW.Localization.Load(LanguageUtilis.GetLanguageLocale(language));
+            SoundBase.Instance.GetComponent<AudioSource>().volume = PlayerPrefs.GetInt("Sound");            
             //			ReloadBoosts ();
 
             boostPurchased = false;
 
-        }
-
-        SystemLanguage GetValidLanguage(SystemLanguage language)
-        {
-            var cfgLanguages = UILanguageSwitch.cfgs;
-            string local = LanguageUtilis.GetLanguageLocale(language);
-            //如果这个语种在游戏允许范围内（策划会配置我们游戏允许的语种列表LanguageSelectionCfg）
-            if (!string.IsNullOrEmpty(local) && cfgLanguages.Exists(p => p.Code == local))
-                return language;
-            //不允许则默认用英语
-            return SystemLanguage.English;
         }
 
         void Start()
