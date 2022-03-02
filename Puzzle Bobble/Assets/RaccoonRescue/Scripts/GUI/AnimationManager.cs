@@ -173,7 +173,7 @@ public class AnimationManager : MonoBehaviour
 
     public void LoseLifeAndGoMap()
     {
-        InitScript.Instance.SpendLife(1);
+        UserInfoMgr.I.SpendLife(1);
         GoToMap();
     }
 
@@ -319,7 +319,8 @@ public class AnimationManager : MonoBehaviour
     public void BuyLifeShop()
     {
         SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
-        if (InitScript.Lifes < InitScript.CapOfLife)
+        //这里之前判断体力不足最大值，才展示购买体力
+        //if (InitScript.Lifes < InitScript.CapOfLife)
             MenuManager.Instance.ShowLifeShop();
 
     }
@@ -454,7 +455,7 @@ public class AnimationManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("game"))
         {
-            InitScript.Instance.AddLife(1);
+            UserInfoMgr.I.AddLife(1);
             GoToMap();
         }
         else
@@ -497,4 +498,11 @@ public class AnimationManager : MonoBehaviour
 
     #endregion
 
+    public void OnGUI()
+    {
+        if(GUILayout.Button("扣体力"))
+        {
+            UserInfoMgr.I.SpendLife(1);
+        }
+    }
 }

@@ -45,7 +45,7 @@ public class LIFESAddCounter : MonoBehaviour
 
 		InitScript.RestLifeTimer -= tick;
 		if (InitScript.RestLifeTimer <= 1 && InitScript.Lifes < InitScript.CapOfLife) {
-			InitScript.Instance.AddLife(1);
+			UserInfoMgr.I.AddLife(1);
 			ResetTimer();
 		}
 		//		}

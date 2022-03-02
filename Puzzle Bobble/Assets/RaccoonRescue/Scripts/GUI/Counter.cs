@@ -55,10 +55,6 @@ public class Counter : MonoBehaviour
 			label.text = "" + InitScript.Gems;
 		}
 
-		if (name == "PriceRefill") {
-			label.text = "" + LevelEditorBase.THIS.CostIfRefill;
-		}
-
 		if (name == "FailedExtraMoves") {
 			label.text = "+" + LevelEditorBase.THIS.ExtraFailedMoves;
 		}

@@ -62,7 +62,7 @@ public class MenuManager : MonoBehaviour
 		}
 		if (status == GameState.GameOver) {
 			MenuFailed.SetActive(true);
-			InitScript.Instance.SpendLife(1);
+			UserInfoMgr.I.SpendLife(1);
 			if (OnMenuLeadboard != null)
 				OnMenuLeadboard();
 		}

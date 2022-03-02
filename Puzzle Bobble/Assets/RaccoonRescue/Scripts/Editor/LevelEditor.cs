@@ -613,8 +613,15 @@ public class LevelEditor : EditorWindow
             GUILayout.EndHorizontal();
             GUILayout.Space(10);
 
-
             lm.CostIfRefill = EditorGUILayout.IntField("Cost of refilling lifes", lm.CostIfRefill, new GUILayoutOption[] {
+                GUILayout.Width (200),
+                GUILayout.MaxWidth (200)
+            }); 
+            lm.CostTwoOursUnlimitedLife = EditorGUILayout.IntField("Cost Two Ours Unlimited Life", lm.CostTwoOursUnlimitedLife, new GUILayoutOption[] {
+                GUILayout.Width (200),
+                GUILayout.MaxWidth (200)
+            });
+            lm.RevertLifeWhenWatchAD = EditorGUILayout.IntField("Revert Life When Watch AD", lm.RevertLifeWhenWatchAD, new GUILayoutOption[] {
                 GUILayout.Width (200),
                 GUILayout.MaxWidth (200)
             });

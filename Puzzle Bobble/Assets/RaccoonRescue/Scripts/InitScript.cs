@@ -103,6 +103,8 @@ namespace InitScriptName
                 //					GameObject.Find ("Canvas").transform.Find ("MenuPlay").gameObject.SetActive (false);
                 //
             }
+
+            
             RestLifeTimer = PlayerPrefs.GetFloat("RestLifeTimer");
 
             //			if(InitScript.DateOfExit == "")

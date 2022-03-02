@@ -30,7 +30,10 @@ public class LevelEditorBase : MonoBehaviour
     public float TotalTimeForRestLifeHours = 0;
     public float TotalTimeForRestLifeMin = 15;
     public float TotalTimeForRestLifeSec = 60;
-    public int CostIfRefill = 12;
+    public int CostIfRefill;
+    public int CostTwoOursUnlimitedLife;
+    public int RevertLifeWhenWatchAD;
+
     public int FirstGems = 20;
     //cost of continue playing after fail
     public int FailedCost;
