@@ -378,6 +378,12 @@ public class AnimationManager : MonoBehaviour
             menuSettings.SetActive(false);
     }
 
+    public void ShowNext()
+    {
+        int nextLevel = UserInfoMgr.I.CurrentLevel;
+        InitScript.Instance.OnLevelClicked(this, new LevelReachedEventArgs(nextLevel));
+    }
+
     public void SoundOff(GameObject Off)
     {
         if (!Off.activeSelf)

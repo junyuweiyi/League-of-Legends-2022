@@ -293,8 +293,9 @@ namespace InitScriptName
 
         public void OnLevelClicked(object sender, LevelReachedEventArgs args)
         {
-            if (EventSystem.current.IsPointerOverGameObject(-1))
-                return;
+            //不知道为什么有这句代码
+            //if (EventSystem.current.IsPointerOverGameObject(-1))
+            //    return;
             if (!MenuManager.Instance.MenuPlay.activeSelf && !MenuManager.Instance.MenuCurrencyShop.activeSelf && !MenuManager.Instance.MenuLifeShop.activeSelf)
             {
                 PlayerPrefs.SetInt("OpenLevel", args.Number);

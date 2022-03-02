@@ -397,6 +397,12 @@ public class creatorBall : MonoBehaviour
     //		return squaresAround;
     //	}
 
+    /// <summary>
+    /// 找一个点的六边形，半径=六边形层数
+    /// </summary>
+    /// <param name="sq"></param>
+    /// <param name="radius"></param>
+    /// <returns></returns>
     public List<Square> GetSquaresAround(Square sq, int radius = 1)
     {
         int row = sq.row;
@@ -424,11 +430,7 @@ public class creatorBall : MonoBehaviour
         }
         for (int i = 1; i < radius; i++)
         {
-            List<Square> listCopy = new List<Square>();
-            foreach (var item in squaresAround)
-            {
-                listCopy.Add(item);
-            }
+            List<Square> listCopy = new List<Square>(squaresAround);
             foreach (Square item in listCopy)
             {
                 List<Square> extraListSquares = GetSquaresAround(item, 1);
