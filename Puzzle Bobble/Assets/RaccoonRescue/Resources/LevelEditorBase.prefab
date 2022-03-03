@@ -313,3 +313,24 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 594ba878ef373453394822f21d461397, type: 3}
   - {fileID: 2800000, guid: 4a986215c086f4d3f8828ce9556fb0c9, type: 3}
   - {fileID: 2800000, guid: 5314f9cac3eaf4ab68837c6d7106cfec, type: 3}
+  itemConfig:
+  - ItemID: 1
+    ItemType: 1
+    ItemSubType: 1
+    Icon: {fileID: 21300000, guid: 43f773a4db27840ba9b6f71e24a088b7, type: 3}
+  - ItemID: 2
+    ItemType: 1
+    ItemSubType: 2
+    Icon: {fileID: 21300000, guid: 594ba878ef373453394822f21d461397, type: 3}
+  - ItemID: 3
+    ItemType: 1
+    ItemSubType: 3
+    Icon: {fileID: 21300000, guid: 4a986215c086f4d3f8828ce9556fb0c9, type: 3}
+  - ItemID: 4
+    ItemType: 1
+    ItemSubType: 4
+    Icon: {fileID: 21300000, guid: 5314f9cac3eaf4ab68837c6d7106cfec, type: 3}
+  - ItemID: 5
+    ItemType: 0
+    ItemSubType: 0
+    Icon: {fileID: 21300000, guid: 26823f9b7f32947d2b02e98c76f6c715, type: 3}

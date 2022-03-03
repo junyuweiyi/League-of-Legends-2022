@@ -500,9 +500,13 @@ public class AnimationManager : MonoBehaviour
 
     public void OnGUI()
     {
-        if(GUILayout.Button("扣体力"))
+        //if(GUILayout.Button("扣体力"))
+        //{
+        //    UserInfoMgr.I.SpendLife(1);
+        //}
+        if (GUILayout.Button("加道具"))
         {
-            UserInfoMgr.I.SpendLife(1);
+            BagMgr.I.AddItem(UnityEngine.Random.Range(0, 10), 1);
         }
     }
 }

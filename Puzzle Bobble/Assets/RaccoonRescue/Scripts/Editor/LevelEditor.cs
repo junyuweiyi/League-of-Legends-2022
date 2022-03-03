@@ -25,7 +25,7 @@ public class LevelEditor : EditorWindow
     private string fileName = "1.txt";
     private int brush;
     private static int selectedTab;
-    string[] toolbarStrings = new string[] { "Editor", "Items", "Settings", "In-apps", "Ads", "Help" };
+    string[] toolbarStrings = new string[] { "关卡编辑", "球配置", "道具配置", "Settings", "In-apps", "Ads", "Help" };
     LevelEditorBase lm;
     private bool enableGoogleAdsProcessing;
     List<AdItem> oldList;
@@ -108,7 +108,7 @@ public class LevelEditor : EditorWindow
         //		Debug.Log (itemsEditor.items.Count);
     }
 
-
+    IGameEditorPanel itemConfigEditorPanel = new ItemConfigEditorPanel();
     void OnGUI()
     {
         GUI.changed = false;
@@ -121,7 +121,7 @@ public class LevelEditor : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Space(30);
         int oldSelected = selectedTab;
-        selectedTab = GUILayout.Toolbar(selectedTab, toolbarStrings, new GUILayoutOption[] { GUILayout.Width(350) });
+        selectedTab = GUILayout.Toolbar(selectedTab, toolbarStrings, new GUILayoutOption[] { GUILayout.Width(500) });
         GUILayout.EndHorizontal();
 
 
@@ -162,21 +162,25 @@ public class LevelEditor : EditorWindow
         }
         else if (selectedTab == 2)
         {
+            itemConfigEditorPanel.Draw(this, lm);
+        }
+        else if (selectedTab == 3)
+        {
             GUISettings();
 
 
         }
-        else if (selectedTab == 3)
+        else if (selectedTab == 4)
         {
             GUIInappSettings();
 
         }
-        else if (selectedTab == 4)
+        else if (selectedTab == 5)
         {
             GUIAds();
 
         }
-        else if (selectedTab == 5)
+        else if (selectedTab == 6)
         {
             GUIHelp();
         }
@@ -227,7 +231,7 @@ public class LevelEditor : EditorWindow
     //
     //	}
 
-    #region ItemEditor
+    #region BallConfigEditor
 
     void GUIItemEditor()
     {
@@ -468,14 +472,15 @@ public class LevelEditor : EditorWindow
         GUILayout.EndVertical();
     }
 
-    void SaveItem()
+    public void SaveItem()
     {
         EditorUtility.SetDirty(lm.gameObject);
         AssetDatabase.SaveAssets();
-
     }
 
     #endregion
+       
+
 
     #region settings
     private bool score_settings;

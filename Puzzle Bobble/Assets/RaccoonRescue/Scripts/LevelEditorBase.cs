@@ -46,7 +46,7 @@ public class LevelEditorBase : MonoBehaviour
     public List<ItemKind> items = new List<ItemKind>();
     public Texture2D[] powerupTextures = new Texture2D[4];
     public Texture2D[] powerupTexturesOn = new Texture2D[4];
-
+    public List<ItemConfig> itemConfig = new List<ItemConfig>();
     void Awake()
     {
         DontDestroyOnLoad(this);//1.2
