@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GameConfigMgr
+﻿public class GameConfigMgr
 {
     public static GameConfigMgr I = new GameConfigMgr();
 
@@ -14,4 +10,5 @@ public class GameConfigMgr
     public int CostIfRefill => LevelEditorBase.THIS.CostIfRefill;
     public int CostTwoOursUnlimitedLife => LevelEditorBase.THIS.CostTwoOursUnlimitedLife;
     public int RevertLifeWhenWatchAD => LevelEditorBase.THIS.RevertLifeWhenWatchAD;
+    public static int StarRewardBoxMaxStar { get; set; }
 }

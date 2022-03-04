@@ -34,6 +34,14 @@ public class LevelEditorBase : MonoBehaviour
     public int CostTwoOursUnlimitedLife;
     public int RevertLifeWhenWatchAD;
 
+    [System.Serializable]
+    public class StarRewardBoxConfig
+    {
+        public int MaxStar;
+        public List<List<Item>> rewardPool = new List<List<Item>>();
+    }
+    public StarRewardBoxConfig StarRewardBoxConfigs = new StarRewardBoxConfig();
+
     public int FirstGems = 20;
     //cost of continue playing after fail
     public int FailedCost;

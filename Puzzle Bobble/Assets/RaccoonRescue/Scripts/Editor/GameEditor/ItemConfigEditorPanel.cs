@@ -1,12 +1,18 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 
 public class ItemConfigEditorPanel : IGameEditorPanel
 {
     ItemConfig selectItemConfig;
+    List<ItemConfig> itemConfigs;
+
     void IGameEditorPanel.Draw(LevelEditor levelEditor, LevelEditorBase levelEditorBase)
     {
+        if (itemConfigs == null)
+            itemConfigs = levelEditorBase.itemConfig;
+
         if (selectItemConfig != null)
         {
             EditorGUILayout.BeginHorizontal();
@@ -56,6 +62,27 @@ public class ItemConfigEditorPanel : IGameEditorPanel
             GUILayout.Space(10);
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Add before", new GUILayoutOption[] { GUILayout.Width(100), GUILayout.Height(25) }))
+            {
+                selectItemConfig = InsertBefore(selectItemConfig);
+                levelEditor.SaveItem();
+            }
+            if (GUILayout.Button("Add after", new GUILayoutOption[] { GUILayout.Width(100), GUILayout.Height(25) }))
+            {
+                selectItemConfig = InsertAfter(selectItemConfig);
+                levelEditor.SaveItem();
+            }
+            if (GUILayout.Button("Delete", new GUILayoutOption[] { GUILayout.Width(100), GUILayout.Height(25) }))
+            {
+                Remove(selectItemConfig);
+                SelectDefault();
+                levelEditor.SaveItem();
+
+            }
+
+            GUILayout.EndHorizontal();
         }
 
         ShowItemConfigList(levelEditor, levelEditorBase);
@@ -76,17 +103,18 @@ public class ItemConfigEditorPanel : IGameEditorPanel
                 if (index < levelEditorBase.itemConfig.Count)
                 {
                     ItemConfig item = levelEditorBase.itemConfig[index];
+                    float buttonSize = selectItemConfig == item ? 65 : 50;
                     if (item.Icon != null)
                     {
                         Texture2D tex = item.Icon.texture;
-                        if (GUILayout.Button(tex, new GUILayoutOption[] { GUILayout.Width(50), GUILayout.Height(50) }))
+                        if (GUILayout.Button(tex, new GUILayoutOption[] { GUILayout.Width(buttonSize), GUILayout.Height(buttonSize) }))
                         {
                             selectItemConfig = item;
                         }
                     }
                     else
                     {
-                        if (GUILayout.Button("", new GUILayoutOption[] { GUILayout.Width(50), GUILayout.Height(50) }))
+                        if (GUILayout.Button("", new GUILayoutOption[] { GUILayout.Width(buttonSize), GUILayout.Height(buttonSize) }))
                         {
                             selectItemConfig = item;
                         }
@@ -96,17 +124,14 @@ public class ItemConfigEditorPanel : IGameEditorPanel
                 {
                     GUILayout.BeginVertical();
                     if (GUILayout.Button("+", new GUILayoutOption[] { GUILayout.Width(50), GUILayout.Height(25) }))
-                    {
-                        //selectedTab = 1;
-                        selectItemConfig = new ItemConfig();
-                        selectItemConfig.ItemID = levelEditorBase.itemConfig.Max(p => p.ItemID) + 1;
-                        levelEditorBase.itemConfig.Add(selectItemConfig);
+                    {                       
+                        selectItemConfig = Add();
                         levelEditor.SaveItem();
                     }
                     if (GUILayout.Button("-", new GUILayoutOption[] { GUILayout.Width(50), GUILayout.Height(25) }))
                     {
-                        selectItemConfig = new ItemConfig();
-                        levelEditorBase.itemConfig.RemoveAt(levelEditorBase.itemConfig.Count - 1);
+                        RemoveAt(levelEditorBase.itemConfig.Count - 1);
+                        SelectDefault();
                         levelEditor.SaveItem();
                     }
                     GUILayout.EndVertical();
@@ -118,5 +143,52 @@ public class ItemConfigEditorPanel : IGameEditorPanel
         }
 
         GUILayout.EndVertical();
+    }
+
+    ItemConfig Add()
+    {
+        var result = new ItemConfig();
+        result.ItemID = itemConfigs.Max(p => p.ItemID) + 1;
+        itemConfigs.Add(result);
+        return result;
+    }
+
+    void Remove(ItemConfig itemConfig)
+    {
+        itemConfigs.Remove(itemConfig);
+    }
+
+    void RemoveAt(int index)
+    {
+        itemConfigs.RemoveAt(index);
+    }
+
+    ItemConfig InsertBefore(ItemConfig reference)
+    {
+        var result = new ItemConfig();
+        result.ItemID = itemConfigs.Max(p => p.ItemID) + 1;
+        int referenceIndex = itemConfigs.IndexOf(reference);
+        itemConfigs.Insert(referenceIndex, result);
+        return result;
+    }
+
+    ItemConfig InsertAfter(ItemConfig reference)
+    {
+        var result = new ItemConfig();
+        result.ItemID = itemConfigs.Max(p => p.ItemID) + 1;
+        int referenceIndex = itemConfigs.IndexOf(reference);
+        itemConfigs.Insert(referenceIndex + 1, result);
+        return result;
+    }
+
+    void SelectDefault()
+    {
+        if (itemConfigs.Count == 0)
+        {
+            selectItemConfig = null;
+            return;
+        }
+        selectItemConfig = itemConfigs[0];
+
     }
 }

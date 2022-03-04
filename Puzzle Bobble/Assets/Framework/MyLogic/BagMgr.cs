@@ -45,6 +45,14 @@ public class BagMgr
         Encode();
     }
 
+    public void AddItems(IEnumerable<Item> items)
+    {
+        foreach (var item in items)
+        {
+            AddItem(item.ID, item.Count);
+        }
+    }
+
     public void RemoveItem(int itemID, int count)
     {
         var item = GetItem(itemID);
