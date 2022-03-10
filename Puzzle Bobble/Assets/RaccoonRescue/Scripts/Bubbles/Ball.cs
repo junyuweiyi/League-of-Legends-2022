@@ -45,16 +45,10 @@ public class Ball : MonoBehaviour
 
     public Vector3 target;
     Vector2 worldPos;
-    Vector3 forceVect;
     public bool setTarget;
-    public float startTime;
-    float duration = 1.0f;
     public Square square;
-    Vector2[] meshArray;
     public bool findMesh;
     Vector3 dropTarget;
-    float row;
-    string str;
     public bool newBall;
     float mTouchOffsetX;
     float mTouchOffsetY;
@@ -68,6 +62,9 @@ public class Ball : MonoBehaviour
     public Sprite cubGui;
     List<Ball> fireballArray = new List<Ball>();
 
+    /// <summary>
+    /// 设置球的销毁状态
+    /// </summary>
     public bool Destroyed
     {
         get { return destroyed; }
@@ -92,34 +89,19 @@ public class Ball : MonoBehaviour
 
     public List<Ball> nearBalls = new List<Ball>();
     GameObject Meshes;
-    public int countNEarBalls;
     float bottomBorder;
     float topBorder;
     float leftBorder;
     float rightBorder;
-    float gameOverBorder;
-    bool gameOver;
     bool isPaused;
-    public AudioClip swish;
-    public AudioClip pops;
-    public AudioClip join;
     Vector3 meshPos;
-    bool dropedDown;
-    bool rayTarget;
-    RaycastHit2D[] bugHits;
-    RaycastHit2D[] bugHits2;
-    RaycastHit2D[] bugHits3;
     public bool falling;
-    Animation character;
-    private int HitBug;
     private bool fireBall;
-    private static int fireworks;
     private bool touchedTop;
     private bool touchedSide;
     private int fireBallLimit = 10;
     private bool launched;
     private bool animStarted;
-    public GameObject splashPrefab;
     Ball targetBall;
 
     public delegate void ThrowAction();
@@ -131,7 +113,6 @@ public class Ball : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        character = GameObject.Find("Character").gameObject.GetComponent<Animation>();
         meshPos = new Vector3(-1000, -1000, -10);
         //  sprite = GetComponent<OTSprite>();
         //sprite.passive = true;
@@ -146,13 +127,8 @@ public class Ball : MonoBehaviour
         topBorder = Camera.main.GetComponent<mainscript>().topBorder;
         leftBorder = Camera.main.GetComponent<mainscript>().leftBorder;
         rightBorder = Camera.main.GetComponent<mainscript>().rightBorder;
-        gameOverBorder = Camera.main.GetComponent<mainscript>().gameOverBorder;
-        gameOver = Camera.main.GetComponent<mainscript>().gameOver;
         isPaused = Camera.main.GetComponent<mainscript>().isPaused;
-        dropedDown = Camera.main.GetComponent<mainscript>().dropingDown;
         rb = GetComponent<Rigidbody2D>();
-        m_lastFixedUpdateTimes = new float[2];
-        m_newTimeIndex = 0;
     }
 
     IEnumerator AllowLaunchBall()
@@ -172,7 +148,6 @@ public class Ball : MonoBehaviour
         GetComponent<CircleCollider2D>().enabled = false;
         // Destroyed = true;
         setTarget = true;
-        startTime = Time.time;
         target = new Vector2(UnityEngine.Random.Range(-3, 3), 2);
         if (rb != null)
             rb.AddForce(target - dropTarget, ForceMode2D.Force);
@@ -196,18 +171,6 @@ public class Ball : MonoBehaviour
             anim.Play("animal_idle");
         }
     }
-
-    Vector3 prevPos;
-    private float[] m_lastFixedUpdateTimes;
-    private int m_newTimeIndex;
-
-    private static float m_interpolationFactor;
-
-    private int OldTimeIndex()
-    {
-        return (m_newTimeIndex == 0 ? 1 : 0);
-    }
-    Vector3 startPos;
 
     bool touchBegin;
     void Update()
@@ -290,17 +253,8 @@ public class Ball : MonoBehaviour
         }
     }
 
-    void LateUpdate()
-    {
-        //Debug.Log(transform.position - prevPos);
-        prevPos = transform.position;
-    }
-
     void FixedUpdate()
     {
-        m_newTimeIndex = OldTimeIndex();
-        m_lastFixedUpdateTimes[m_newTimeIndex] = Time.fixedTime;
-
         if (GameEvent.Instance.GameStatus == GameState.GameOver)
             return;
 
@@ -402,7 +356,6 @@ public class Ball : MonoBehaviour
         target = worldPos;
 
         setTarget = true;
-        startTime = Time.time;
         dropTarget = transform.position;
         InitScript.Instance.BoostActivated = false;
         mainscript.Instance.newBall = gameObject;
@@ -411,7 +364,6 @@ public class Ball : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.zero;
 
-        startPos = transform.position;
         rb.AddForce((target - dropTarget) * 10, ForceMode2D.Force);
         StartCoroutine(DetectSquare(speed));
         //Debug.DrawLine( DrawLine.waypoints[0], target );
@@ -799,7 +751,6 @@ public class Ball : MonoBehaviour
                 nearBalls.Add(obj.GetComponent<Ball>());
             }
         }
-        countNEarBalls = nearBalls.Count;
     }
 
     IEnumerator pullToMesh(Transform otherBall = null, System.Action callback = null)
@@ -1046,15 +997,6 @@ public class Ball : MonoBehaviour
     }
 
     #region COLLISION
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (findMesh && other.gameObject.layer == 9)
-        {
-            //  StartCoroutine(pullToMesh());
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D coll)
     {
         OnTriggerEnter2D(coll.collider);
@@ -1225,7 +1167,7 @@ public class Ball : MonoBehaviour
     #endregion
 
     #region Additional_Prefab
-
+    //这里是记录当前ball已挂载的额外prefab
     public List<GameObject> prefabList = new List<GameObject>();
 
     public void AddPrefab()
