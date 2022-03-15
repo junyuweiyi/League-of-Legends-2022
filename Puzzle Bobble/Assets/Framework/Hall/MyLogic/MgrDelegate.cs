@@ -15,6 +15,10 @@ public class MgrDelegate
         BagMgr.I.AddItems(rewards);
     }
 
+    public int GetTotalStar()
+    {
+        return LevelsMap._instance.GetTotalLevelStar();
+    }
 
     public static List<ItemRandom> GenerateRandomRewards(IEnumerable<IReadOnlyList<ItemRandom>> itemRandomGroups)
     {
@@ -30,9 +34,12 @@ public class MgrDelegate
     }
 }
 
+[System.Serializable]
 public class ItemRandom : WeightRandomUtils.IWeightRandomObject
 {
-    public int Weight => 0;
+    public int Weight => weight;
 
-    public Item Item;
+    public int weight;
+
+    public Item item = new Item();
 }

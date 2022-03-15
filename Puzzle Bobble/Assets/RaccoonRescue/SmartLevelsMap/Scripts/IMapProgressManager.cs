@@ -3,4 +3,5 @@
     int LoadLevelStarsCount(int level);
     void SaveLevelStarsCount(int level, int starsCount);
     void ClearLevelProgress(int level);
+    int GetTotalLevelStar();
 }

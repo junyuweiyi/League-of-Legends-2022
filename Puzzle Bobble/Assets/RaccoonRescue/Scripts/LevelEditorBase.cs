@@ -33,14 +33,15 @@ public class LevelEditorBase : MonoBehaviour
     public int CostIfRefill;
     public int CostTwoOursUnlimitedLife;
     public int RevertLifeWhenWatchAD;
-
     [System.Serializable]
     public class StarRewardBoxConfig
     {
         public int MaxStar;
-        public List<List<Item>> rewardPool = new List<List<Item>>();
+        public int Gems;
+        public List<ItemRandom> rewardPool = new List<ItemRandom>();
     }
     public StarRewardBoxConfig StarRewardBoxConfigs = new StarRewardBoxConfig();
+    public List2SerSerialize DailyRewardConfigs = new List2SerSerialize();
 
     public int FirstGems = 20;
     //cost of continue playing after fail
@@ -55,6 +56,7 @@ public class LevelEditorBase : MonoBehaviour
     public Texture2D[] powerupTextures = new Texture2D[4];
     public Texture2D[] powerupTexturesOn = new Texture2D[4];
     public List<ItemConfig> itemConfig = new List<ItemConfig>();
+
     void Awake()
     {
         DontDestroyOnLoad(this);//1.2

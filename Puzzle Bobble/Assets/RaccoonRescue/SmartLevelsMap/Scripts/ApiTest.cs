@@ -155,6 +155,8 @@ public class ApiTest : MonoBehaviour, IMapProgressManager
 
     }
 
+    public int GetTotalLevelStar() { return 0; }
+
     #endregion
 
     #region Confirmation demo

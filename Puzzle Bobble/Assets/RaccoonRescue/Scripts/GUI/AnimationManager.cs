@@ -466,37 +466,28 @@ public class AnimationManager : MonoBehaviour
 
     #endregion
 
-    #region Facebook
-
-    public void FaceBookLogin()
+    public void ShowStarRewardBox(GameObject starRewardBox)
     {
-#if FACEBOOK
-		SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
-
-		FacebookManager.THIS.CallFBLogin();
-#endif
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
+        if (!starRewardBox.activeSelf)
+        {
+            starRewardBox.SetActive(true);
+            //           menuSettings.GetComponent<SequencePlayer>().Play();
+        }
+        else
+            starRewardBox.SetActive(false);
     }
-
-    public void FaceBookLogout()
+    public void ClickStarRewardWidget(GameObject starRewardBox)
     {
-#if FACEBOOK
-		SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
-
-		FacebookManager.THIS.CallFBLogout();
-
-#endif
+        if (StarRewardMgr.I.Rewardable)
+        {
+            StarRewardMgr.I.Reward();
+        }
+        else
+        {
+            ShowStarRewardBox(starRewardBox);
+        }
     }
-
-    public void Share()
-    {
-#if FACEBOOK
-		SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
-
-		FacebookManager.THIS.Share();
-#endif
-    }
-
-    #endregion
 
     public void OnGUI()
     {

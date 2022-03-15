@@ -25,7 +25,7 @@ public class LevelEditor : EditorWindow
     private string fileName = "1.txt";
     private int brush;
     private static int selectedTab;
-    string[] toolbarStrings = new string[] { "关卡编辑", "球配置", "道具配置", "Settings", "In-apps", "Ads", "Help" };
+    string[] toolbarStrings = new string[] { "关卡编辑", "球配置", "道具配置", "游戏功能配置", "Settings", "In-apps", "Ads", "Help" };
     LevelEditorBase lm;
     private bool enableGoogleAdsProcessing;
     List<AdItem> oldList;
@@ -109,6 +109,7 @@ public class LevelEditor : EditorWindow
     }
 
     IGameEditorPanel itemConfigEditorPanel = new ItemConfigEditorPanel();
+    IGameEditorPanel logicFunctionConfigEditorPanel = new LogicFunctionConfigEditorPanel();
     void OnGUI()
     {
         GUI.changed = false;
@@ -166,21 +167,25 @@ public class LevelEditor : EditorWindow
         }
         else if (selectedTab == 3)
         {
+            logicFunctionConfigEditorPanel.Draw(this, lm);
+        }
+        else if (selectedTab == 4)
+        {
             GUISettings();
 
 
         }
-        else if (selectedTab == 4)
+        else if (selectedTab == 5)
         {
             GUIInappSettings();
 
         }
-        else if (selectedTab == 5)
+        else if (selectedTab == 6)
         {
             GUIAds();
 
         }
-        else if (selectedTab == 6)
+        else if (selectedTab == 7)
         {
             GUIHelp();
         }

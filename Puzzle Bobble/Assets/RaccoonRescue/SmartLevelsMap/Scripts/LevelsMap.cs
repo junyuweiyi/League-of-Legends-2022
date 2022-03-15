@@ -243,6 +243,11 @@ public class LevelsMap : MonoBehaviour
         Reset();
     }
 
+    public int GetTotalLevelStar()
+    {
+        return _mapProgressManager.GetTotalLevelStar();
+    }
+
     public void SetStarsEnabled(bool bEnabled)
     {
         StarsEnabled = bEnabled;

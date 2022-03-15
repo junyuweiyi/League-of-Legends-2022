@@ -98,7 +98,6 @@ public class Ball : MonoBehaviour
     public bool falling;
     private bool fireBall;
     private bool touchedTop;
-    private bool touchedSide;
     private int fireBallLimit = 10;
     private bool launched;
     private bool animStarted;
@@ -1104,19 +1103,14 @@ public class Ball : MonoBehaviour
         {
 
             //// check if we collided with a left block and adjust our speed and rotation accordingly
-            if (transform.position.x <= leftBorder && target.x < 0 && !touchedSide)
+            if (transform.position.x <= leftBorder && target.x < 0)
             {
-
-                //  touchedSide = true;
-                Invoke("CanceltouchedSide", 0.1f);
                 SwitchVelocity();
                 //				print ("trigger " +rb.velocity);
             }
             // check if we collided with a right block and adjust our speed and rotation accordingly
-            if (transform.position.x >= rightBorder && target.x > 0 && !touchedSide)
+            if (transform.position.x >= rightBorder && target.x > 0)
             {
-                //  touchedSide = true;
-                Invoke("CanceltouchedSide", 0.1f);
                 SwitchVelocity();
             }
             //             check if we collided with a right block and adjust our speed and rotation accordingly
@@ -1140,12 +1134,6 @@ public class Ball : MonoBehaviour
             target = targetBall.transform.position;
             rb.velocity = (target - transform.position).normalized * 10;
         }
-    }
-
-    void CanceltouchedSide()
-    {
-        touchedSide = false;
-
     }
 
     public void SetupCollider()

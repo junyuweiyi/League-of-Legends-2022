@@ -93,9 +93,40 @@ MonoBehaviour:
   TotalTimeForRestLifeHours: 0
   TotalTimeForRestLifeMin: 15
   TotalTimeForRestLifeSec: 60
-  CostIfRefill: 100
+  CostIfRefill: 2147483647
   CostTwoOursUnlimitedLife: 12
   RevertLifeWhenWatchAD: 1
+  StarRewardBoxConfigs:
+    MaxStar: 15
+    Gems: 20
+    rewardPool:
+    - weight: 12
+      item:
+        ID: 222
+        Count: 2
+    - weight: 1
+      item:
+        ID: 1
+        Count: 1
+  DailyRewardConfigs:
+    List:
+    - List:
+      - ID: 1
+        Count: 2
+      - ID: 3
+        Count: 4
+      - ID: 5
+        Count: 6
+    - List:
+      - ID: 0
+        Count: 0
+    - List: []
+    - List: []
+    - List: []
+    - List: []
+    - List: []
+    - List: []
+    - List: []
   FirstGems: 8888
   FailedCost: 12
   ExtraFailedMoves: 5

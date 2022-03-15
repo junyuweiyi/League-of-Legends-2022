@@ -63,6 +63,9 @@ public class creatorBall : MonoBehaviour
         Camera.main.GetComponent<mainscript>().connectNearBallsGlobal();
         StartCoroutine(getBallsForMesh());
         //        ShowBugs();
+
+
+        Core.Match match = new Core.Match();
     }
 
     public void LoadMap(int[] pMap)

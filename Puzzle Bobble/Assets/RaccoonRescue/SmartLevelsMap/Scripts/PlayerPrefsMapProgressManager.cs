@@ -22,4 +22,16 @@ public class PlayerPrefsMapProgressManager : IMapProgressManager
     {
         PlayerPrefs.DeleteKey(GetLevelKey(level));
     }
+
+    public int GetTotalLevelStar()
+    {
+        int result = 0;
+        int level = 0;
+        while (PlayerPrefs.HasKey(GetLevelKey(level)))
+        {
+            result += LoadLevelStarsCount(level);
+            level++;
+        }
+        return result;
+    }
 }
